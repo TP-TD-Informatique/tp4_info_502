@@ -24,7 +24,9 @@ void yyerror (char const *s) {
 %token NL END       /* fin de ligne et fin de fichier */
 %token <str> STR    /* chaines de symboles, avec guillemets */
 
-%left rePLUS reDOT
+%left reDOT
+%left rePLUS
+%left reSTAR
 
 %type <regex> expr
 

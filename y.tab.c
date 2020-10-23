@@ -479,7 +479,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   22
+#define YYLAST   24
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  14
@@ -536,8 +536,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    36,    36,    37,    40,    43,    44,    47,    48,    49,
-      50,    51,    52,    53
+       0,    38,    38,    39,    42,    45,    46,    49,    50,    51,
+      52,    53,    54,    55
 };
 #endif
 
@@ -577,7 +577,7 @@ static const yytype_int16 yytoknum[] =
 static const yytype_int8 yypact[] =
 {
        0,    -5,    -5,    -5,    -2,    -5,     5,     0,     6,    14,
-       8,    -5,    -5,    -5,    -2,    -2,    -5,    -5,     9,     9
+       8,    -5,    -5,    -5,    -2,    -2,    -5,    -5,     9,    17
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -592,7 +592,7 @@ static const yytype_int8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -5,    15,    -5,    -5,    -4
+      -5,    16,    -5,    -5,    -4
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -608,14 +608,14 @@ static const yytype_int8 yytable[] =
 {
       10,     1,     2,     1,     2,    11,     3,     4,     3,     4,
       18,    19,     5,    14,    15,    16,    16,    13,    17,    14,
-      15,    16,    12
+      15,    16,    14,    12,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
        4,     3,     4,     3,     4,     0,     8,     9,     8,     9,
       14,    15,    12,     5,     6,     7,     7,    11,    10,     5,
-       6,     7,     7
+       6,     7,     5,     7,     7
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -1333,67 +1333,67 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 36 "tp4-Traini.y"
+#line 38 "tp4-Traini.y"
                             { printf("\n"); exit(0); }
 #line 1339 "y.tab.c"
     break;
 
   case 4:
-#line 40 "tp4-Traini.y"
+#line 42 "tp4-Traini.y"
                             { printf("\n# "); }
 #line 1345 "y.tab.c"
     break;
 
   case 5:
-#line 43 "tp4-Traini.y"
+#line 45 "tp4-Traini.y"
                             { printf("?"); }
 #line 1351 "y.tab.c"
     break;
 
   case 6:
-#line 44 "tp4-Traini.y"
+#line 46 "tp4-Traini.y"
                             { print_C_regex((yyvsp[0].regex)); }
 #line 1357 "y.tab.c"
     break;
 
   case 7:
-#line 47 "tp4-Traini.y"
+#line 49 "tp4-Traini.y"
                             { (yyval.regex) = zero(); }
 #line 1363 "y.tab.c"
     break;
 
   case 8:
-#line 48 "tp4-Traini.y"
+#line 50 "tp4-Traini.y"
                             { (yyval.regex) = one(); }
 #line 1369 "y.tab.c"
     break;
 
   case 9:
-#line 49 "tp4-Traini.y"
+#line 51 "tp4-Traini.y"
                             { (yyval.regex) = symbol((yyvsp[0].symbol)); }
 #line 1375 "y.tab.c"
     break;
 
   case 10:
-#line 50 "tp4-Traini.y"
+#line 52 "tp4-Traini.y"
                             { (yyval.regex) = (yyvsp[-1].regex); }
 #line 1381 "y.tab.c"
     break;
 
   case 11:
-#line 51 "tp4-Traini.y"
+#line 53 "tp4-Traini.y"
                             { (yyval.regex) = plus((yyvsp[-2].regex), (yyvsp[0].regex)); }
 #line 1387 "y.tab.c"
     break;
 
   case 12:
-#line 52 "tp4-Traini.y"
+#line 54 "tp4-Traini.y"
                             { (yyval.regex) = cat((yyvsp[-2].regex), (yyvsp[0].regex)); }
 #line 1393 "y.tab.c"
     break;
 
   case 13:
-#line 53 "tp4-Traini.y"
+#line 55 "tp4-Traini.y"
                             { (yyval.regex) = star((yyvsp[-1].regex)); }
 #line 1399 "y.tab.c"
     break;
