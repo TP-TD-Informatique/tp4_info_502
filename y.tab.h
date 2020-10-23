@@ -59,7 +59,8 @@ extern int yydebug;
     RPAR = 265,
     NL = 266,
     END = 267,
-    STR = 268
+    STR = 268,
+    QUESTION = 269
   };
 #endif
 /* Tokens.  */
@@ -74,6 +75,7 @@ extern int yydebug;
 #define NL 266
 #define END 267
 #define STR 268
+#define QUESTION 269
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -85,7 +87,7 @@ union YYSTYPE
     char symbol;        /* pour les symboles */
     char* str;          /* pour les chaines */
 
-#line 89 "y.tab.h"
+#line 91 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -23,6 +23,7 @@ void yyerror (char const *s) {
 %token LPAR RPAR    /* parenthèses */
 %token NL END       /* fin de ligne et fin de fichier */
 %token <str> STR    /* chaines de symboles, avec guillemets */
+%token QUESTION     /* caractère '?' point d'intérogation */
 
 %left reDOT
 %left rePLUS
@@ -44,6 +45,7 @@ line:
 cmd:
                             { printf("?"); }
     |   expr                { print_C_regex($1); }
+    |	QUESTION	    { printf("Question ?"); }
 
 expr:
         reZERO              { $$ = zero(); }

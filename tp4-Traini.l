@@ -36,6 +36,7 @@ str \"[a-z]*\"
 " " ;       /* on ignore les espaces */
 "\n"        return NL;
 <<EOF>>     return END;
+"?"         return QUESTION;
 
 
 .           yyerror("caractère inconnu");
