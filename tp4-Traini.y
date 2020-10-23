@@ -27,9 +27,13 @@ void yyerror (char const *s) {
 %token reDERIVATE   /* pour la dérivation, caractère '/' */
 %token IN	    /* permet de tester si une chaine IN une regex */
 
+%right rePLUS
 %left reDOT
-%left rePLUS
 %left reSTAR
+%right reSYMB
+%right LPAR
+%left RPAR
+%left reDERIVATE
 
 %type <regex> expr
 
@@ -58,3 +62,5 @@ expr:
     |   expr reDOT expr     { $$ = cat($1, $3); }
     |	expr reSTAR	    { $$ = star($1); }
     |	expr reDERIVATE STR { $$ = derivate($1, $3); }
+    |	reSYMB expr	    { $$ = cat(symbol($1), $2); }
+    |	expr reSYMB	    { $$ = cat($1, symbol($2)); }

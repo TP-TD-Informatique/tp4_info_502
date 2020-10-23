@@ -31,7 +31,7 @@ void print_regex(regex r) {
             if (r->first_son->regex_type == PLUS) {
                 printf("(");
                 print_regex(r->first_son);
-                printf(").");
+                printf(")");
             } else {
                 print_regex(r->first_son);
             }
@@ -82,6 +82,9 @@ int contains_epsilon(regex r) {
 
             case STAR:
                 return 1;
+
+            default:
+                return 0; // Pour enlever le warning même si non nécessaire (le switch gère déjà tout les cas sans le default)
         }
     }
 }
@@ -116,6 +119,9 @@ regex derivative(regex r, char c) {
 
             case STAR:
                 return smart_cat(derivative(r->first_son, c), r);
+
+            default:
+                return zero(); // Pour enlever le warning même si non nécessaire (le switch gère déjà tout les cas sans le default)
         }
     }
 }
@@ -145,7 +151,7 @@ int match(regex r, char *s) {
 
     if (*s != '\0') { // Si la chaine est non vide
         r = simplify_better(derivative(r, *s)); // Dérive r avec le premier caractère de s
-        match(r, s + 1); // On test pour l'expression dérivé la chaine à partir du second caractère
+        return match(r, s + 1); // On test pour l'expression dérivé la chaine à partir du second caractère
     } else { // Si la chaine est vide
         if (contains_epsilon(r)) return 1;
         return 0; // Si le regex ne contient pas 1, il ne reconnait pas la chaine vide
@@ -225,5 +231,7 @@ void test() {
  * Question 3 :
  * %right rePLUS reDOT lis a+b+c de cette façon -> a+(b+c)
  * %left rePLUS reDOT lis a+b+c de cette façon -> (a+b)+c
- * Le côté que l'on renseigne après le %, est celui ou Yacc mettra de expr dans les cas ambigue comme ici.
+ * Le côté que l'on renseigne après le %, est celui qui sera interpreté en premier par Yacc
+ * Donc par exemple a+b.c donne a + (b . c) si on met %right rePLUS et (a) + b.c si on met %left rePLUS.
+ * Les parenthèses sont là pour désigner la partie qui est interprétée en premier
  */
