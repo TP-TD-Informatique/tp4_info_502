@@ -208,3 +208,12 @@ void test() {
     printf("Il faut faire quelque chose de plus intéressant...\n");
     printf("(à définir dans le fichiers tp3-???.c)\n");
 }
+
+/*
+ * QUESTIONS
+ *
+ * Question 3 :
+ * %right rePLUS reDOT lis a+b+c de cette façon -> a+(b+c)
+ * %left rePLUS reDOT lis a+b+c de cette façon -> (a+b)+c
+ * Le côté que l'on renseigne après le %, est celui ou Yacc mettra de expr dans les cas ambigue comme ici.
+ */
