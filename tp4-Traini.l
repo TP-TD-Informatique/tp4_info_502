@@ -1,7 +1,7 @@
 /**********************************************************************
  *** fichier à rendre pour le TP3 d'info502 (théorie des langages)
  *** lexer
- *** étudiants: Roudoudou et compagnie
+ *** étudiant: Traini
  **********************************************************************/
 
 %{
