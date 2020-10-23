@@ -25,6 +25,7 @@ void yyerror (char const *s) {
 %token <str> STR    /* chaines de symboles, avec guillemets */
 %token QUESTION     /* caractère '?' point d'intérogation */
 %token reDERIVATE   /* pour la dérivation, caractère '/' */
+%token IN	    /* permet de tester si une chaine IN une regex */
 
 %left reDOT
 %left rePLUS
@@ -44,9 +45,9 @@ line:
     cmd NL                  { printf("\n# "); }
 
 cmd:
-                            { printf("?"); }
+        QUESTION            { printf("?"); }
     |   expr                { print_regex($1); }
-    |	QUESTION	    { printf("Question ?"); }
+    |	STR IN expr	    { if (match($3, $1)) { printf("TRUE"); } else { printf("FALSE"); } }
 
 expr:
         reZERO              { $$ = zero(); }
