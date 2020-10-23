@@ -451,7 +451,7 @@ char *yytext;
 /**********************************************************************
  *** fichier à rendre pour le TP3 d'info502 (théorie des langages)
  *** lexer
- *** étudiants: Roudoudou et compagnie
+ *** étudiant: Traini
  **********************************************************************/
 #line 8 "tp4-Traini.l"
 #include "regex.h"

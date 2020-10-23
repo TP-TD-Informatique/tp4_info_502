@@ -48,3 +48,4 @@ expr:
     |   LPAR expr RPAR      { $$ = $2; }
     |   expr rePLUS expr    { $$ = plus($1, $3); }
     |   expr reDOT expr     { $$ = cat($1, $3); }
+    |	expr reSTAR	    { $$ = star($1); }
