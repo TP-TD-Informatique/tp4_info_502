@@ -34,6 +34,7 @@ void yyerror (char const *s) {
 %right LPAR
 %left RPAR
 %left reDERIVATE
+%left QUESTION
 
 %type <regex> expr
 
@@ -49,15 +50,17 @@ line:
     cmd NL                  { printf("\n# "); }
 
 cmd:
-        QUESTION            { printf("?"); }
+                            { printf("?"); }
     |   expr                { print_regex($1); }
     |	STR IN expr	    { if (match($3, $1)) { printf("TRUE"); } else { printf("FALSE"); } }
+
 
 expr:
         reZERO              { $$ = zero(); }
     |   reONE               { $$ = one(); }
     |   reSYMB              { $$ = symbol($1); }
     |   LPAR expr RPAR      { $$ = $2; }
+    |	expr QUESTION	    { $$ = plus($1, one()); }
     |   expr rePLUS expr    { $$ = plus($1, $3); }
     |   expr reDOT expr     { $$ = cat($1, $3); }
     |	expr reSTAR	    { $$ = star($1); }
