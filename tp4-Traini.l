@@ -14,7 +14,7 @@ void yyerror(char *s);
 %option noyywrap
 
 /* des expressions régulières pour repérer certains token */
-symbol [a-z]
+symbol [a-zA-Z]
 str \"[a-z]*\"
 
 

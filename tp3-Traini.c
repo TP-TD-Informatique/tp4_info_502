@@ -224,14 +224,3 @@ void test() {
     printf("Il faut faire quelque chose de plus intéressant...\n");
     printf("(à définir dans le fichiers tp3-???.c)\n");
 }
-
-/*
- * QUESTIONS
- *
- * Question 3 :
- * %right rePLUS reDOT lis a+b+c de cette façon -> a+(b+c)
- * %left rePLUS reDOT lis a+b+c de cette façon -> (a+b)+c
- * Le côté que l'on renseigne après le %, est celui qui sera interpreté en premier par Yacc
- * Donc par exemple a+b.c donne a + (b . c) si on met %right rePLUS et (a) + b.c si on met %left rePLUS.
- * Les parenthèses sont là pour désigner la partie qui est interprétée en premier
- */
