@@ -88,6 +88,9 @@ int contains_epsilon(regex r) ;
 /* calcul la dérivé d'une regex selon un symbol */
 regex derivative(regex r, char c) ;
 
+/* calcul de la dérivé d'une regex selon une chaine de caractères */
+regex derivate(regex r, char *str);
+
 /* renvoie 1 si une regex contient une chaine, et 0 sinon */
 int match(regex r, char* s) ;
 

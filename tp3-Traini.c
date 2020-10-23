@@ -120,6 +120,16 @@ regex derivative(regex r, char c) {
     }
 }
 
+/* calcul de la dérivé d'une regex selon une chaine de caractères */
+regex derivate(regex r, char *str) {
+    char *c = str;
+    while (*c != '\0') {
+        r = derivative(r, *c);
+        c++;
+    }
+    return r;
+}
+
 /* renvoie 1 si une regex contient une chaine, et 0 sinon */
 int match(regex r, char *s) {
     //print_regex(r);printf("\n\n");

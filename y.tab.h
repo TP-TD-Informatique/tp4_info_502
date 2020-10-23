@@ -60,7 +60,8 @@ extern int yydebug;
     NL = 266,
     END = 267,
     STR = 268,
-    QUESTION = 269
+    QUESTION = 269,
+    reDERIVATE = 270
   };
 #endif
 /* Tokens.  */
@@ -76,6 +77,7 @@ extern int yydebug;
 #define END 267
 #define STR 268
 #define QUESTION 269
+#define reDERIVATE 270
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -87,7 +89,7 @@ union YYSTYPE
     char symbol;        /* pour les symboles */
     char* str;          /* pour les chaines */
 
-#line 91 "y.tab.h"
+#line 93 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

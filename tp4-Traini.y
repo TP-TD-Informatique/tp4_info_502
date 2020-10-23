@@ -24,6 +24,7 @@ void yyerror (char const *s) {
 %token NL END       /* fin de ligne et fin de fichier */
 %token <str> STR    /* chaines de symboles, avec guillemets */
 %token QUESTION     /* caractère '?' point d'intérogation */
+%token reDERIVATE   /* pour la dérivation, caractère '/' */
 
 %left reDOT
 %left rePLUS
@@ -44,7 +45,7 @@ line:
 
 cmd:
                             { printf("?"); }
-    |   expr                { print_C_regex($1); }
+    |   expr                { print_regex($1); }
     |	QUESTION	    { printf("Question ?"); }
 
 expr:
@@ -55,3 +56,4 @@ expr:
     |   expr rePLUS expr    { $$ = plus($1, $3); }
     |   expr reDOT expr     { $$ = cat($1, $3); }
     |	expr reSTAR	    { $$ = star($1); }
+    |	expr reDERIVATE STR { $$ = derivate($1, $3); }

@@ -27,6 +27,7 @@ str \"[a-z]*\"
 ")"         return RPAR;
 "0"         return reZERO;
 "1"         return reONE;
+"/"         return reDERIVATE;
 {symbol}    {yylval.symbol = yytext[0]; return reSYMB;}
 {str}       { unsigned n = strlen(yytext);
               char *s = GC_MALLOC(n-1);
